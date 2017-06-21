@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="js/angular.min.js" charset="utf-8"></script>
+<script src="js/dataRandon.js"></script>
+<style>
+table,th,td{
+	border:1px solid black;
+	border-collapse:collapse;
+   }
+</style>
+</head>
+
+<body ng-app="myModule">
+<div class="" ng-controller="myController">
+<table class="">
+ <tr>
+ <th>UserId</th>
+ <th>Id</th>
+ <th>Title</th>
+ <th>Body</th>
+ </tr>
+ <tr ng-repeat="dat in data">
+ <td>{{dat.userId}}</td>
+ <td>{{dat.id}}</td>
+ <td>{{dat.title}}</td>
+ <td>{{dat.body}}</td>
+ </tr>
+ </table>
+</div>
+
+
+</body>
+</html>
