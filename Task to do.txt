@@ -1,0 +1,10 @@
+Create a array of places you have visited 
+1)give rating out of 10
+2)distance from Indore
+3)preferred mode of transport.
+4)Center of attraction 
+
+a) A person can search & sort 
+b) distance can be in KMs and Miles
+c) A person can add any place
+d) A person can only delete places added by him.
