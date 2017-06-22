@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="angular.min.js" charset="utf-8"></script>
+    <style media="screen">
+      td,th
+      {
+        border: 1px solid red;
+        border-collapse:collapse;
+
+      }
+      table
+      {
+        box-shadow: 10px 10px 70px gold;
+      }
+    </style>
+  </head>
+  <body ng-app="myModule">
+    <div class="" ng-controller="myController1">
+      <input type="text" name="" value="" ng-model="newName">
+      <button type="button" name="button" ng-click=addPlayer()>Add Player</button><br>
+      <input type="text" name="" value="" ng-model="searchText" placeholder="search">
+      <table>
+        <tr>
+          <th ng-click="sortBy('name')"><a href="#">Name</a></th>
+          <th ng-click="sortBy('like')" ><a href="#">Likes</a></th>
+          <th ng-click="sortBy('dislike')" ><a href="#">Dislikes</a></th>
+          <th>Delete</th>
+          <th>Edit</th>
+        </tr>
+        <tr ng-repeat="player in players | filter:search |orderBy:oder | limitTo:5">
+          <td ng-show="player.view">{{player.name |toSurname:"ra":"ta"|uppercase }}</td>
+          <td ng-hide="player.view"><input type="text" name="" value="" ng-model="player.name"></td>
+          <td ng-click="addLike(player)">{{player.like}}</td>
+          <td ng-click="addDisLike(player)">{{player.dislike}}</td>
+          <td><button type="button" name="button" ng-click="deleteMe(player)">Delete</button></td>
+          <td><button type="button" name="button" ng-click="changeView(player)" ng-show="player.view">Edit</button>
+          <button type="button" name="button" ng-click="changeView(player)" ng-hide="player.view">Save</button></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+
+
+<script type="text/javascript">
+var app = angular.module("myModule",[]);
+app.filter("toSurname",function () {
+  return function (name,vari,vari1) {
+    console.log(vari);
+    console.log(vari1);
+    if (name=="sachin") {
+      return "Tendulker";
+    }
+    else
+    {
+        return name;
+    }
+  }
+});
+app.controller("myController1",function ($scope) {
+$scope.players = [{name:"sachin",like:0,dislike:0,view:true},{name:"Virat",like:0,dislike:0,view:true},{name:"Dhoni",like:0,dislike:0,view:true},{name:"Dhawan",like:0,dislike:0,view:true}];
+
+$scope.addLike= function (player) {
+  player.like++;
+};
+$scope.addDisLike= function (player) {
+  player.dislike++;
+};
+$scope.addPlayer= function() {
+  var player={};
+  player.name=$scope.newName;
+  player.like=0;
+  player.dislike=0;
+  player.view=true;
+  $scope.players.push(player);
+};
+$scope.deleteMe= function (player) {
+  $scope.players.splice($scope.players.indexOf(player),1);
+}
+$scope.changeView=function (player) {
+  console.log(player.view);
+  if (player.view==true) {
+    player.view="";
+  }
+  else {
+    player.view=true;
+  }
+}
+$scope.search=function (item) {
+  if ($scope.searchText==null) {
+    return true;
+  }
+  else if (item.name.toUpperCase().indexOf($scope.searchText.toUpperCase())>=0) {
+        return true;
+  }
+  else {
+    return false;
+  }
+}
+$scope.oder="name";
+$scope.sortBy= function(item) {
+
+  if ($scope.oder==item) {
+
+      $scope.oder="-"+item;
+  }
+  else {
+      $scope.oder=item;
+  }
+
+}
+});
+</script>
+</html>
