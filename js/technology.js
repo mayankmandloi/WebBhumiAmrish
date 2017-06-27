@@ -8,6 +8,16 @@ app.controller("techController",function($scope) {
     $scope.technologies.push(obj);
   }
 
-
-
+$scope.deleteTech = function (obj) {
+  $scope.technologies.splice($scope.technologies.indexOf(obj),1);
+}
+$scope.order=function (ordr) {
+  if($scope.orderByMe==ordr)
+  {
+    $scope.orderByMe= "-"+ordr;
+  }
+  else {
+    $scope.orderByMe = ordr;
+  }
+}
 })

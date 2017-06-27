@@ -22,6 +22,7 @@
       <input type="text" name="" value="" ng-model="newName">
       <button type="button" name="button" ng-click=addPlayer()>Add Player</button><br>
       <input type="text" name="" value="" ng-model="searchText" placeholder="search">
+      <input type="text" name="" value="" ng-model="surname">
       <table>
         <tr>
           <th ng-click="sortBy('name')"><a href="#">Name</a></th>
@@ -31,7 +32,7 @@
           <th>Edit</th>
         </tr>
         <tr ng-repeat="player in players | filter:search |orderBy:oder | limitTo:5">
-          <td ng-show="player.view">{{player.name}}</td>
+          <td ng-show="player.view">{{player.name |toSurname:this|uppercase }}</td>
           <td ng-hide="player.view"><input type="text" name="" value="" ng-model="player.name"></td>
           <td ng-click="addLike(player)">{{player.like}}</td>
           <td ng-click="addDisLike(player)">{{player.dislike}}</td>
@@ -47,17 +48,20 @@
 <script type="text/javascript">
 var app = angular.module("myModule",[]);
 app.filter("toSurname",function () {
-  return function (name) {
+  var toSurnameFunc= function (name,scope) {
     if (name=="sachin") {
-      return "Tendulker";
+      return scope.surname;
     }
     else
     {
         return name;
     }
-  }
+  };
+  toSurnameFunc.$stateful=true;
+  return toSurnameFunc;
 });
 app.controller("myController1",function ($scope) {
+$scope.surname="Teee  endulkaR"
 $scope.players = [{name:"sachin",like:0,dislike:0,view:true},{name:"Virat",like:0,dislike:0,view:true},{name:"Dhoni",like:0,dislike:0,view:true},{name:"Dhawan",like:0,dislike:0,view:true}];
 
 $scope.addLike= function (player) {
