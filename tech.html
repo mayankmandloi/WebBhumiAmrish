@@ -20,9 +20,17 @@
             <th>Delete</th>
           </tr>
           <tr ng-repeat="technology in technologies | filter:tect1 | orderBy:orderByMe">
-            <td>{{technology.name | uppercase }}</td>
+            <td ng-hide="technology.view">{{technology.name | uppercase }}</td>
+
+            <td ng-show="technology.view"><input type="text" name="" value="" ng-model="technology.name"></td>
+
             <td>{{technology.fee |currency }}</td>
+
             <td><button type="button" name="button" ng-click="deleteTech(technology)">Delete</button></td>
+
+            <td ng-hide="technology.view"><button type="button" name="button" ng-click="showHide(technology)">Edit</button></td>
+
+            <td ng-show="technology.view"><button type="button" name="button" ng-click="showHide(technology)">Save</button></td>
           </tr>
         </table>
 

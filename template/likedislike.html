@@ -1,0 +1,21 @@
+<input type="text" name="" value="" ng-model="newName">
+      <button type="button" name="button" ng-click=addPlayer()>Add Player</button><br>
+      <input type="text" name="" value="" ng-model="searchText" placeholder="search">
+      <table>
+        <tr>
+          <th ng-click="sortBy('name')"><a href="#">Name</a></th>
+          <th ng-click="sortBy('like')" ><a href="#">Likes</a></th>
+          <th ng-click="sortBy('dislike')" ><a href="#">Dislikes</a></th>
+          <th>Delete</th>
+          <th>Edit</th>
+        </tr>
+        <tr ng-repeat="player in players | filter:search |orderBy:oder | limitTo:5">
+          <td ng-show="player.view">{{player.name}}</td>
+          <td ng-hide="player.view"><input type="text" name="" value="" ng-model="player.name"></td>
+          <td ng-click="addLike(player)">{{player.like}}</td>
+          <td ng-click="addDisLike(player)">{{player.dislike}}</td>
+          <td><button type="button" name="button" ng-click="deleteMe(player)">Delete</button></td>
+          <td><button type="button" name="button" ng-click="changeView(player)" ng-show="player.view">Edit</button>
+          <button type="button" name="button" ng-click="changeView(player)" ng-hide="player.view">Save</button></td>
+        </tr>
+      </table>

@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+
+<script src="js/angular.js"></script>
+<script src="js/places.js"></script>
+<style>
+table,th,td{
+    border:1px solid black;
+}
+</style>
+</head>
+
+<body>
+<div class="" ng-app="myModule">
+  <div class="" ng-controller="myController">
+    <input type="text" name="" ng-model="Tplace" placeholder="Place">
+    <input type="text" name="" ng-model="Tdistance" placeholder="Distance">
+    <input type="text" name="" ng-model="Ttransport" placeholder="Transport">
+    <input type="text" name="" ng-model="Tattraction" placeholder="Centre of Attraction">
+    <input type="text" name="" ng-model="Trating" placeholder="Rating">
+    <button type="submit" ng-click="add()">Add</button><br><br>
+    <input type="text" name="" value="" ng-model="tour" placeholder="Search">
+    <input type="radio" name="unit" ng-value="km" checked ng-click="show('km')">Kilometers
+    <input type="radio" name="unit" ng-value="miles" ng-click="show('miles')">Miles
+     <table>
+     <tr>
+     <th ng-click="order('place')">Place</th>
+     <th ng-click="order('distance')">Distance</th>
+     <th ng-click="order('transport')">Mode of Transport</th>
+     <th ng-click="order('attraction')">Center of Attraction</th>
+     <th ng-click="order('rating')">Rating</th>
+     <th>Delete</th>
+     </tr>
+       <tr ng-repeat="tourist in tourists | filter: search | orderBy:orderByMe">
+       <td>{{tourist.place}}</td>
+       <td>{{tourist.distance|UnitChange:unit}}</td>
+       <td>{{tourist.transport}}</td>
+       <td>{{tourist.attraction}}</td>
+       <td>{{tourist.rating}}</td>
+       <td><button type="button" name="button" ng-click="delete(tourist)">Delete</button></td>
+       </tr>
+     </table>
+  </div>
+</div>
+</body>
+</html>

@@ -1,5 +1,5 @@
-var app = angular.module("MyModule",[]);
-app.controller("myController",function($scope,$http) {
+
+application.controller("myController",function($scope,$http) {
 $scope.search=function () {
   $http({
     method:'GET',

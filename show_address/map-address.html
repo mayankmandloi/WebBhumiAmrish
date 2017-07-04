@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="js/angular.js" charset="utf-8"></script>
+    <script src="js/map.js" charset="utf-8"></script>
+  </head>
+  <body ng-app="MyModule">
+    <div class="" ng-controller="myController" ng-init="input = 'Rajwada'">
+      <div>
+      <input type="text" name="" value="" ng-model="input">
+      <button type="button" name="button" ng-click="search()">Search</button>
+    </div>
+      <div class="" ng-repeat="map in maps" style="width:50%;float:left">
+        <h2>{{map.formatted_address}}</h2>
+          <div ng-repeat="ac in map.address_components|filter:typesShow">
+            <p>{{ac.long_name}}</p>
+          </div>
+          <p>{{map.geometry.location.lat}}</p>
+          <p>{{map.geometry.location.lng}}</p>
+      </div>
+    </div>
+
+  </body>
+</html>

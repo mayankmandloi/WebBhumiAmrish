@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="js/angular.js" charset="utf-8" ></script>
+  </head>
+  <body ng-app="DemoModule">
+    <div class="" ng-controller="Controller">
+
+    </div>
+  </body>
+  <script type="text/javascript">
+    var app = angular.module("DemoModule",[])
+    app.controller("Controller",function($http) {
+      $http.head("http://it-ebooks-api.info/v1/search/php%20mysql").then(function (response) { console.log(response.headers); } ,
+      function (response) {
+        console.log(response.headers);
+      });
+    })
+  </script>
+</html>

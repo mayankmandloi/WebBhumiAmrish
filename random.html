@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="js/angular.min.js" charset="utf-8"></script>
+<script src="js/random.js"></script>
+<style>
+table,th,td{
+	border:1px solid black;
+	border-collapse:collapse;
+   }
+</style>
+</head>
+
+<body ng-app="myModule">
+<div class="" ng-controller="myController">
+	<input type="text" name="" value="" ng-model="input">
+	<button type="button" name="button" ng-click="search()">Search</button>
+
+<div class="" ng-repeat="result in results" style="width:50%;float:left">
+	<div class="" ng-repeat="c in result.address_components">
+	<h1>{{c.long_name}}</h1>
+  </div>
+</div>
+
+</body>
+</html>
