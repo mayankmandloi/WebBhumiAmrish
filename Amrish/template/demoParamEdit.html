@@ -1,0 +1,6 @@
+<div ng-repeat="book in books|filter:showData">
+	<p><input type="text" name="" ng-model="book.Title"></p>
+	<p><textarea ng-model="book.Description"></textarea></p>
+	<img ng-src={{book.Image}} alt="">
+	<a href="#!/booksAPI">Save</a>
+</div>

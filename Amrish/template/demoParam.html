@@ -1,0 +1,8 @@
+<div ng-repeat="book in books|filter:showData">
+	<h1>{{book.Title}}</h1>
+	<p>{{book.Description}}</p>
+	<a href="#!/booksAPI/{{book.ID}}" ng-show="link">View</a>
+	<a href="#!/booksAPI/{{book.ID}}/edit" ng-hide="link">Edit</a>
+
+	<img ng-src={{book.Image}} alt="">
+</div>
