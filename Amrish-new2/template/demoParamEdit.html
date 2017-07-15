@@ -1,0 +1,20 @@
+<div ng-if="edit">
+	<p><input type="text" name="" ng-model="book.Title"></p>
+	<p><textarea ng-model="book.Description"></textarea></p>
+	<img ng-src={{book.Image}} alt="">
+	<div>
+		<a href="#!/booksAPI">Back</a>
+		<a href="#!/booksAPI/{{book.ID}}">View</a>
+		<a href="javascript:void();" ng-click="saveBook(book)">Save</a>
+	</div>
+</div>
+
+<div ng-if="!edit">
+	<p>{{book.Title}}</p>
+	<p>book.Description</p>
+	<img ng-src={{book.Image}} alt="">
+	<div>
+		<a href="#!/booksAPI">Back</a>
+		<a href="#!/booksAPI/{{book.ID}}/edit">Edit</a>
+	</div>
+</div>
